@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VerifiedSeller - Home</title>
   <style>
-        /* ===========================
-           Global Styles
-        ============================ */
         * {
             margin: 0;
             padding: 0;
@@ -19,9 +16,7 @@
             text-decoration: none;
         }
 
-        /* ===========================
-           Navbar
-        ============================ */
+    
         nav {
             width: 100%;
             background-color: #333;
@@ -48,9 +43,7 @@
             color: #ffd700;
         }
 
-        /* ===========================
-           Hero Section
-        ============================ */
+    
         .hero {
             height: 70vh;
             background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c'); /* replace with your image */
@@ -78,9 +71,7 @@
             font-size: 3.5rem;
         }
 
-        /* ===========================
-           Cards Section
-        ============================ */
+    
         .cards {
             display: flex;
             flex-wrap: wrap;
@@ -88,11 +79,11 @@
             gap: 3rem; /* space between cards */
             padding: 6rem 2rem;
             background-color: #f9f9f9;
-            margin-bottom: 4rem; /* space before footer */
+            margin-bottom: 4rem; 
         }
 
         .card {
-            background-color: white;
+            background-color: burlywood;
             width: 350px;
             padding: 4rem;
             border-radius: 10px;
@@ -104,6 +95,7 @@
         .card:hover {
             transform: translateY(-10px);
             box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+            cursor: pointer;
         }
 
         .card h3 {
@@ -117,9 +109,7 @@
             font-size: 1.1rem;
         }
 
-        /* ===========================
-           Footer
-        ============================ */
+        
         footer {
             background-color: #333;
             color: white;
@@ -137,9 +127,7 @@
             text-decoration: underline;
         }
 
-        /* ===========================
-           Responsive Design
-        ============================ */
+    
         @media(max-width: 768px){
             .cards {
                 flex-direction: column;
@@ -165,8 +153,8 @@
     <nav>
         <div class="logo"><a href="#">VerifiedSeller</a></div>
         <div class="nav-links">
-            <a href="#">Home</a>
-            <a href="#">About</a>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
             <a href="#">Services</a>
             <a href="#">Contact</a>
         </div>
@@ -177,25 +165,34 @@
         <h1>Welcome to VerifiedSeller</h1>
     </section>
 
-    <!-- Cards Section -->
-    <section class="cards">
+  
+<!-- Cards Section -->
+<section class="cards">
+    <a href="about.html" class="card-link">
         <div class="card">
             <h3>About Us</h3>
             <p>Learn more about our mission and values, and how we help sellers and buyers connect safely.</p>
         </div>
+    </a>
+    <a href="seller.html" class="card-link">
         <div class="card">
             <h3>Seller</h3>
-            <p>Join our platform as a seller and reach thousands of verified buyers easily and securely.</p>
+            <p>Join our platform as a seller and reach thousands of different buyers easily and securely.</p>
         </div>
+    </a>
+    <a href="buyer.html" class="card-link">
         <div class="card">
             <h3>Buyer</h3>
             <p>Find verified sellers with confidence and get the best products at great prices.</p>
         </div>
+    </a>
+    <a href="admin.html" class="card-link">
         <div class="card">
             <h3>Admin</h3>
-            <p>Manage the platform efficiently, oversee transactions, and maintain a secure marketplace.</p>
+            <p>Manager of the platform</p>
         </div>
-    </section>
+    </a>
+</section>
      <footer>
         <p>&copy; 2025 VerifiedSeller. All rights reserved.</p>
         <p>
