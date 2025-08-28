@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VerifiedSeller - Home</title>
+  <style>
+        /* ===========================
+           Global Styles
+        ============================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* ===========================
+           Navbar
+        ============================ */
+        nav {
+            width: 100%;
+            background-color: #333;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo a {
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        nav .nav-links a {
+            color: white;
+            margin-left: 1.5rem;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        /* ===========================
+           Hero Section
+        ============================ */
+        .hero {
+            height: 70vh;
+            background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c'); /* replace with your image */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            margin-bottom: 4rem; /* space before cards */
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.5); /* overlay to make text readable */
+        }
+
+        .hero h1 {
+            position: relative;
+            font-size: 3.5rem;
+        }
+
+        /* ===========================
+           Cards Section
+        ============================ */
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 3rem; /* space between cards */
+            padding: 6rem 2rem;
+            background-color: #f9f9f9;
+            margin-bottom: 4rem; /* space before footer */
+        }
+
+        .card {
+            background-color: white;
+            width: 350px;
+            padding: 4rem;
+            border-radius: 10px;
+            box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+        }
+
+        .card h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.6rem;
+            color: #333;
+        }
+
+        .card p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        /* ===========================
+           Footer
+        ============================ */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+
+        footer a {
+            color: #ffd700;
+            margin: 0 0.5rem;
+            transition: text-decoration 0.3s;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===========================
+           Responsive Design
+        ============================ */
+        @media(max-width: 768px){
+            .cards {
+                flex-direction: column;
+                align-items: center;
+                gap: 2rem;
+            }
+
+            .card {
+                width: 90%;
+                padding: 3rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo"><a href="#">VerifiedSeller</a></div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Welcome to VerifiedSeller</h1>
+    </section>
+
+    <!-- Cards Section -->
+    <section class="cards">
+        <div class="card">
+            <h3>About Us</h3>
+            <p>Learn more about our mission and values, and how we help sellers and buyers connect safely.</p>
+        </div>
+        <div class="card">
+            <h3>Seller</h3>
+            <p>Join our platform as a seller and reach thousands of verified buyers easily and securely.</p>
+        </div>
+        <div class="card">
+            <h3>Buyer</h3>
+            <p>Find verified sellers with confidence and get the best products at great prices.</p>
+        </div>
+        <div class="card">
+            <h3>Admin</h3>
+            <p>Manage the platform efficiently, oversee transactions, and maintain a secure marketplace.</p>
+        </div>
+    </section>
+     <footer>
+        <p>&copy; 2025 VerifiedSeller. All rights reserved.</p>
+        <p>
+            <a href="#">Privacy Policy</a> | 
+            <a href="#">Terms of Service</a> | 
+            <a href="#">Contact</a>
+        </p>
+    </footer>
+
+</body>
+</html>
