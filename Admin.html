@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - VerifiedSeller</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f9f9f9; margin: 0; padding: 0; }
+        .container { max-width: 700px; margin: 40px auto; background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);}
+        h2 { text-align: center; margin-bottom: 1.5rem; }
+        form label { display: block; margin-top: 1rem; }
+        form input { width: 100%; padding: 0.5rem; margin-top: 0.3rem; border: 1px solid #ccc; border-radius: 4px; }
+        form button { margin-top: 1.5rem; width: 100%; padding: 0.7rem; background: #333; color: #fff; border: none; border-radius: 4px; font-size: 1rem; cursor: pointer;}
+        form button:hover { background: #ffd700; color: #333; }
+        .section { margin-top: 2rem; }
+        .pending-list, .reviews-list { margin-top: 1rem; }
+        .pending-item, .review-item { background: #f1f1f1; padding: 1rem; border-radius: 4px; margin-bottom: 1rem; }
+        .actions button { margin-right: 1rem; }
+        .reply-box { margin-top: 0.5rem; }
+        .logout-btn { background: #c00; color: #fff; border: none; border-radius: 4px; padding: 0.5rem 1.2rem; font-size: 1rem; cursor: pointer; float: right; margin-bottom: 1rem;}
+        .logout-btn:hover { background: #900; }
+        .clearfix::after { content: ""; display: table; clear: both; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Admin Login Form -->
+        <form id="adminLoginForm">
+            <h2>Admin Login</h2>
+            <label for="adminUser">Username</label>
+            <input type="text" id="adminUser" name="adminUser" required>
+            <label for="adminPass">Password</label>
+            <input type="password" id="adminPass" name="adminPass" required>
+            <button type="submit">Login</button>
+        </form>
+
+        <!-- Admin Dashboard (hidden by default) -->
+        <div id="adminDashboard" style="display:none;">
+            <div class="clearfix">
+                <h2 style="float:left;">Admin Dashboard</h2>
+                <button class="logout-btn" onclick="logoutAdmin()">Logout</button>
+            </div>
+            
+            <!-- Pending Seller Registrations -->
+            <div class="section">
+                <h3>Pending Seller Registrations</h3>
+                <div class="pending-list" id="pendingList">
+                    <!-- Example pending sellers -->
+                    <div class="pending-item">
+                        <strong>Business Name:</strong> ABC Traders<br>
+                        <strong>Owner:</strong> John Doe<br>
+                        <strong>Email:</strong> john@example.com<br>
+                        <div class="actions">
+                            <button onclick="approveSeller(this)">Approve</button>
+                            <button onclick="rejectSeller(this)">Reject</button>
+                        </div>
+                    </div>
+                    <div class="pending-item">
+                        <strong>Business Name:</strong> XYZ Supplies<br>
+                        <strong>Owner:</strong> Jane Smith<br>
+                        <strong>Email:</strong> jane@example.com<br>
+                        <div class="actions">
+                            <button onclick="approveSeller(this)">Approve</button>
+                            <button onclick="rejectSeller(this)">Reject</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reviews, Ratings, Comments -->
+            <div class="section">
+                <h3>Reviews, Ratings & Comments</h3>
+                <div class="reviews-list" id="reviewsList">
+                    <div class="review-item">
+                        <strong>Seller:</strong> ABC Traders<br>
+                        <strong>Buyer:</strong> Michael<br>
+                        <strong>Rating:</strong> ★★★★☆<br>
+                        <strong>Comment:</strong> Good service, but delivery was slow.<br>
+                        <div class="reply-box">
+                            <input type="text" placeholder="Reply to comment..." />
+                            <button onclick="replyToComment(this)">Reply</button>
+                        </div>
+                    </div>
+                    <div class="review-item">
+                        <strong>Seller:</strong> XYZ Supplies<br>
+                        <strong>Buyer:</strong> Sarah<br>
+                        <strong>Rating:</strong> ★★★★★<br>
+                        <strong>Comment:</strong> Excellent experience!<br>
+                        <div class="reply-box">
+                            <input type="text" placeholder="Reply to comment..." />
+                            <button onclick="replyToComment(this)">Reply</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Simulate admin login (replace with backend logic later)
+        document.getElementById('adminLoginForm').onsubmit = function(e) {
+            e.preventDefault();
+            // Replace with real authentication
+            var user = document.getElementById('adminUser').value;
+            var pass = document.getElementById('adminPass').value;
+            if(user === "admin" && pass === "admin123") {
+                document.getElementById('adminLoginForm').style.display = 'none';
+                document.getElementById('adminDashboard').style.display = 'block';
+            } else {
+                alert("Invalid credentials. Try admin / admin123 for demo.");
+            }
+        };
+
+        // Logout function
+        function logoutAdmin() {
+            document.getElementById('adminDashboard').style.display = 'none';
+            document.getElementById('adminLoginForm').style.display = 'block';
+            document.getElementById('adminUser').value = '';
+            document.getElementById('adminPass').value = '';
+        }
+
+        // Approve seller (demo)
+        function approveSeller(btn) {
+            btn.closest('.pending-item').innerHTML = "<span style='color:green;'>Seller Approved</span>";
+        }
+        // Reject seller (demo)
+        function rejectSeller(btn) {
+            btn.closest('.pending-item').innerHTML = "<span style='color:red;'>Seller Rejected</span>";
+        }
+        // Reply to comment (demo)
+        function replyToComment(btn) {
+            var input = btn.previousElementSibling;
+            if(input.value.trim() !== "") {
+                btn.closest('.reply-box').innerHTML = "<span style='color:blue;'>Replied: " + input.value + "</span>";
+            }
+        }
+    </script>
+</body>
+</html>
