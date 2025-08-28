@@ -1,38 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BrunoCashPoint - About</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VerifiedSeller</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <header>
-        <h1>About BrunoCashPoint</h1>
-        <nav>
-            <a href="index.html">Home</a> |
-            <a href="about.html">About</a>
-        </nav>
-    </header>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo">VerifiedSeller</a>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#seller">Seller</a></li>
+        <li><a href="#buyer">Buyer</a></li>
+        <li><a href="#admin">Admin</a></li>
+      </ul>
+    </div>
+  </nav>
 
-    <main>
-        <section>
-            <h2>Our Mission</h2>
-            <p>To provide easy, secure, and fast financial services to our customers.</p>
-        </section>
+  <!-- Pages Sections -->
+  <section id="home" class="page-section">
+    <h1>Welcome to VerifiedSeller</h1>
+    <p>Peace of mind when buying from social media sellers.</p>
+  </section>
 
-        <section>
-            <h2>Why Choose Us?</h2>
-            <ul>
-                <li>Reliable service</li>
-                <li>Secure transactions</li>
-                <li>Quick support</li>
-            </ul>
-        </section>
-    </main>
+  <section id="about" class="page-section">
+    <h2>About Us</h2>
+    <p>VerifiedSeller ensures buyers know exactly who they're buying from before paying.</p>
+  </section>
 
-    <footer>
-        <p>&copy; 2025 BrunoCashPoint. All rights reserved.</p>
-    </footer>
+  <section id="seller" class="page-section">
+    <h2>Seller Login</h2>
+    <form id="sellerLoginForm">
+      <input type="text" placeholder="Username" required />
+      <input type="password" placeholder="Password" required />
+      <button type="submit">Login</button>
+    </form>
+  </section>
+
+  <section id="buyer" class="page-section">
+    <h2>Buyer Login</h2>
+    <form id="buyerLoginForm">
+      <input type="text" placeholder="Username or Email" required />
+      <input type="password" placeholder="Password" required />
+      <button type="submit">Login</button>
+    </form>
+  </section>
+
+  <section id="admin" class="page-section">
+    <h2>Admin Login</h2>
+    <form id="adminLoginForm">
+      <input type="text" placeholder="Admin Username" required />
+      <input type="password" placeholder="Password" required />
+      <button type="submit">Login</button>
+    </form>
+  </section>
+
+  <script src="app.js"></script>
 </body>
 </html>
