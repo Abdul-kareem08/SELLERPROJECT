@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Seller - VerifiedSeller</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f9f9f9; margin: 0; padding: 0; }
+        .container { max-width: 500px; margin: 40px auto; background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);}
+        h2 { text-align: center; margin-bottom: 1.5rem; }
+        form label { display: block; margin-top: 1rem; }
+        form input, form textarea { width: 100%; padding: 0.5rem; margin-top: 0.3rem; border: 1px solid #ccc; border-radius: 4px; }
+        form button { margin-top: 1.5rem; width: 100%; padding: 0.7rem; background: #333; color: #fff; border: none; border-radius: 4px; font-size: 1rem; cursor: pointer;}
+        form button:hover { background: #ffd700; color: #333; }
+        .info { margin-top: 2rem; background: #e7f3fe; padding: 1rem; border-radius: 4px; }
+        .reviews { margin-top: 2rem; }
+        .review { background: #f1f1f1; padding: 1rem; border-radius: 4px; margin-bottom: 1rem; }
+        .rating { color: #ffd700; }
+        .switch-links { text-align: center; margin-top: 1.5rem; }
+        .switch-links a { color: #333; text-decoration: underline; cursor: pointer; margin: 0 0.5rem; }
+        .forgot-link { display: block; text-align: right; margin-top: 0.5rem; font-size: 0.95em; }
+        #registerForm, #loginForm, #forgotForm { display: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Seller Section</h2>
+        <div id="chooseSection">
+            <div class="switch-links">
+                <button onclick="showRegister()">Register</button>
+                <button onclick="showLogin()">Login</button>
+            </div>
+        </div>
+
+        <!-- Registration Form -->
+        <form id="registerForm">
+            <h2>Seller Registration</h2>
+            <label for="businessName">Business Name</label>
+            <input type="text" id="businessName" name="businessName" required>
+
+            <label for="ownerName">Owner Name</label>
+            <input type="text" id="ownerName" name="ownerName" required>
+
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="businessId">Business Identification Number</label>
+            <input type="text" id="businessId" name="businessId" required>
+
+            <label for="address">Business Address</label>
+            <textarea id="address" name="address" rows="2" required></textarea>
+            
+            <label for="password">Create Password</label>
+            <input type="password" id="password" name="password" required>
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
+            
+            <button type="submit">Register</button>
+            <div class="switch-links">
+                Already have an account? <a onclick="showLogin()">Login</a>
+            </div>
+        </form>
+        <div class="info" id="afterRegister" style="display:none;">
+            <strong>Note:</strong> Registration successful! Please wait for admin approval. Once approved, you can log in below.
+        </div>
+
+        <!-- Login Form -->
+        <form id="loginForm">
+            <h2>Seller Login</h2>
+            <label for="loginEmail">Email Address</label>
+            <input type="email" id="loginEmail" name="loginEmail" required>
+            <label for="loginPassword">Password</label>
+            <input type="password" id="loginPassword" name="loginPassword" required>
+            <button type="submit">Login</button>
+            <a class="forgot-link" onclick="showForgot()">Forgot Password?</a>
+            <div class="switch-links">
+                Don't have an account? <a onclick="showRegister()">Register</a>
+            </div>
+        </form>
+
+        <!-- Forgot Password Form -->
+        <form id="forgotForm">
+            <h2>Forgot Password</h2>
+            <label for="forgotEmail">Enter your email address</label>
+            <input type="email" id="forgotEmail" name="forgotEmail" required>
+            <button type="submit">Reset Password</button>
+            <div class="switch-links">
+                <a onclick="showLogin()">Back to Login</a>
+            </div>
+        </form>
+
+        <!-- Reviews section, hidden by default -->
+        <div class="reviews" id="reviewsSection" style="display:none;">
+            <h3>Buyer Reviews & Ratings</h3>
+            <div class="review">
+                <strong>John Doe</strong> <span class="rating">★★★★★</span>
+                <p>Great seller, fast delivery and honest communication!</p>
+            </div>
+            <div class="review">
+                <strong>Jane Smith</strong> <span class="rating">★★★★☆</span>
+                <p>Good experience overall, would buy again.</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Show/hide forms
+        function showRegister() {
+            document.getElementById('chooseSection').style.display = 'none';
+            document.getElementById('registerForm').style.display = 'block';
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('forgotForm').style.display = 'none';
+            document.getElementById('afterRegister').style.display = 'none';
+        }
+        function showLogin() {
+            document.getElementById('chooseSection').style.display = 'none';
+            document.getElementById('registerForm').style.display = 'none';
+            document.getElementById('loginForm').style.display = 'block';
+            document.getElementById('forgotForm').style.display = 'none';
+            document.getElementById('afterRegister').style.display = 'none';
+        }
+        function showForgot() {
+            document.getElementById('chooseSection').style.display = 'none';
+            document.getElementById('registerForm').style.display = 'none';
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('forgotForm').style.display = 'block';
+            document.getElementById('afterRegister').style.display = 'none';
+        }
+
+        // Simulate registration
+        document.getElementById('registerForm').onsubmit = function(e) {
+            e.preventDefault();
+            document.getElementById('registerForm').style.display = 'none';
+            document.getElementById('afterRegister').style.display = 'block';
+            document.getElementById('loginForm').style.display = 'block';
+        };
+
+        // Simulate login (replace with backend logic later)
+        document.getElementById('loginForm').onsubmit = function(e) {
+            e.preventDefault();
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('afterRegister').style.display = 'none';
+            document.getElementById('reviewsSection').style.display = 'block';
+        };
+
+        // Simulate forgot password (replace with backend logic later)
+        document.getElementById('forgotForm').onsubmit = function(e) {
+            e.preventDefault();
+            alert('If this email exists, a password reset link will be sent.');
+            showLogin();
+        };
+
+        // Show choose section on page load
+        document.getElementById('chooseSection').style.display = 'block';
+    </script>
+</body>
+</html>
