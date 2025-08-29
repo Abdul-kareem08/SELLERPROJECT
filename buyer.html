@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Buyer Login</title>
+  <title>Buyer Welcome</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -15,26 +15,47 @@
       margin: 0;
     }
     .container {
-      width: 350px;
-      border: 1px solid ;
+      width: 900px;
+      border: 1px solid #ddd;
       border-radius: 8px;
       padding: 30px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       background-color: white;
+      margin: 20px;
+      text-align: center;
     }
-    .top-text {
+    .welcome {
+      font-size: 1.2em;
+      color: #333;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .main-sections {
       display: flex;
+      gap: 30px;
       justify-content: space-between;
-      font-size: 14px;
-      margin-bottom: 15px;
+      align-items: flex-start;
+      margin-top: 20px;
     }
-    .top-text a {
-      color: #ff4c00;
+    .section-box {
+      flex: 1;
+      background: #fafafa;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      padding: 20px 15px 15px 15px;
+      min-width: 0;
+      box-sizing: border-box;
+    }
+    .section-title {
+      font-size: 1.1em;
       font-weight: bold;
-      text-decoration: none;
+      margin-bottom: 15px;
+      color: #ff7a00;
+      text-align: left;
     }
     .form-group {
       margin-bottom: 15px;
+      text-align: left;
     }
     .form-group label {
       display: block;
@@ -48,14 +69,6 @@
       border-bottom: 1px solid #ccc;
       font-size: 14px;
     }
-    .forgot {
-      font-size: 12px;
-      margin-bottom: 20px;
-    }
-    .forgot a {
-      text-decoration: none;
-      color: #666;
-    }
     .btn {
       width: 100%;
       padding: 12px;
@@ -66,75 +79,177 @@
       font-weight: bold;
       border-radius: 25px;
       cursor: pointer;
+      margin-top: 10px;
+    }
+    .verify-result {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .trusted-sellers {
+      margin-top: 10px;
+      text-align: left;
+    }
+    .seller-card {
+      width: 100%;
+      border: 1px solid #eee;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+      background: #fff;
+      position: relative;
+      display: block;
+      box-sizing: border-box;
+    }
+    .badge {
+      background: #ffd700;
+      color: #333;
+      font-weight: bold;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 0.9em;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+    .rating {
+      color: #ffd700;
+      font-size: 1.1em;
+      margin-left: 5px;
+    }
+    .seller-products {
+      margin: 8px 0;
+      font-size: 0.97em;
+    }
+    .seller-location {
+      font-size: 0.95em;
+      color: #666;
+    }
+    .pay-btn {
+      background: #28a745;
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      padding: 7px 18px;
+      font-size: 1em;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+    .pay-btn:hover {
+      background: #218838;
+    }
+    @media (max-width: 1100px) {
+      .container {
+        width: 98vw;
+        min-width: 0;
+        padding: 10px;
+      }
+      .main-sections {
+        flex-direction: column;
+        gap: 0;
+      }
+      .section-box {
+        margin-bottom: 30px;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Login Form -->
-  <div class="container" id="loginForm">
-    <div class="top-text">
-      <span><strong>Login</strong></span>
-      <span>New to Buyer? <a href="#" onclick="showRegister()">Register</a></span>
-    </div>
-    <form onsubmit="loginUser(event)">
+  <!-- Email Collection Form -->
+  <div class="container" id="emailFormContainer" style="display:none;">
+    <form id="emailForm" onsubmit="saveBuyerEmail(event)">
       <div class="form-group">
-        <label>Account:</label>
-        <input type="text" id="loginAccount" placeholder="Enter your account" required>
+        <label for="buyerEmail">Enter your email to get updates and reminders:</label>
+        <input type="email" id="buyerEmail" required placeholder="your@email.com">
       </div>
-      <div class="form-group">
-        <label>Password:</label>
-        <input type="password" id="loginPassword" placeholder="Enter password" required>
-      </div>
-      <div class="forgot">
-        <a href="#">Forgot password?</a>
-      </div>
-      <button type="submit" class="btn">Login</button>
+      <button type="submit" class="btn">Continue</button>
     </form>
   </div>
 
-  <!-- Registration Form -->
-  <div class="container" id="registerForm" style="display:none;">
-    <div class="top-text">
-      <span><strong>Register</strong></span>
-      <span>Already have an account? <a href="#" onclick="showLogin()">Login</a></span>
+  <!-- Main Content (shown after email is entered) -->
+  <div class="container" id="mainContent" style="display:none;">
+    <div class="welcome">
+      Welcome! You can verify a seller or explore our trusted sellers.<br>
+      <small>(You will receive updates and reminders at your email.)</small>
     </div>
-    <form onsubmit="registerUser(event)">
-      <div class="form-group">
-        <label>Full Name:</label>
-        <input type="text" id="regName" placeholder="Enter your name" required>
+    <div class="main-sections">
+      <!-- Section 1: Verify a Seller (Left) -->
+      <div class="section-box">
+        <div class="section-title">1. Verify a Seller</div>
+        <form id="verifySellerForm" onsubmit="verifySeller(event)">
+          <div class="form-group">
+            <label for="paymentNumber">Enter Seller Payment Number:</label>
+            <input type="text" id="paymentNumber" required placeholder="e.g. 0712345678">
+          </div>
+          <button type="submit" class="btn">Verify Seller</button>
+        </form>
+        <div id="verifyResult" class="verify-result"></div>
       </div>
-      <div class="form-group">
-        <label>Email:</label>
-        <input type="email" id="regEmail" placeholder="Enter your email" required>
+      <!-- Section 2: Explore Trusted Sellers (Right) -->
+      <div class="section-box">
+        <div class="section-title">2. Explore Trusted Sellers</div>
+        <div class="trusted-sellers" id="trustedSellersList">
+          <!-- Example sellers (replace with dynamic content from backend) -->
+          <div class="seller-card">
+            <span class="badge">Verified</span>
+            <div><strong>Mary's Fashion</strong> <span class="rating">★★★★★</span></div>
+            <div class="seller-products">Products: Dresses, Shoes, Bags</div>
+            <div class="seller-location">Location: Dar es Salaam</div>
+            <button class="pay-btn" onclick="payNow('Mary\'s Fashion')">Pay Now</button>
+          </div>
+          <div class="seller-card">
+            <span class="badge">Verified</span>
+            <div><strong>Juma Electronics</strong> <span class="rating">★★★★☆</span></div>
+            <div class="seller-products">Products: Phones, TVs, Accessories</div>
+            <div class="seller-location">Location: Arusha</div>
+            <button class="pay-btn" onclick="payNow('Juma Electronics')">Pay Now</button>
+          </div>
+          <div class="seller-card">
+            <span class="badge">Verified</span>
+            <div><strong>Fatma Groceries</strong> <span class="rating">★★★★☆</span></div>
+            <div class="seller-products">Products: Fruits, Vegetables, Spices</div>
+            <div class="seller-location">Location: Mwanza</div>
+            <button class="pay-btn" onclick="payNow('Fatma Groceries')">Pay Now</button>
+          </div>
+        </div>
       </div>
-      <div class="form-group">
-        <label>Password:</label>
-        <input type="password" id="regPassword" placeholder="Create password" required>
-      </div>
-      <button type="submit" class="btn">Register</button>
-    </form>
+    </div>
   </div>
 
   <script>
-    function showRegister() {
-      document.getElementById('loginForm').style.display = 'none';
-      document.getElementById('registerForm').style.display = 'block';
+    // Check if buyer email is already saved
+    if(localStorage.getItem('buyerEmail')) {
+      document.getElementById('mainContent').style.display = 'block';
+    } else {
+      document.getElementById('emailFormContainer').style.display = 'block';
     }
 
-    function showLogin() {
-      document.getElementById('loginForm').style.display = 'block';
-      document.getElementById('registerForm').style.display = 'none';
-    }
-
-    function registerUser(event) {
+    function saveBuyerEmail(event) {
       event.preventDefault();
-    //   alert("🎉 Registration successful! Please login to continue.");
-      showLogin();
+      var email = document.getElementById('buyerEmail').value;
+      localStorage.setItem('buyerEmail', email);
+      document.getElementById('emailFormContainer').style.display = 'none';
+      document.getElementById('mainContent').style.display = 'block';
     }
 
-    function loginUser(event) {
+    // Demo: Registered payment numbers
+    const registeredNumbers = ['0712345678', '0755555555', '0688888888'];
+
+    function verifySeller(event) {
       event.preventDefault();
-      window.location.href = "dashboard.html"; // Moja kwa moja kwenye dashboard
+      var number = document.getElementById('paymentNumber').value.trim();
+      var result = document.getElementById('verifyResult');
+      if(registeredNumbers.includes(number)) {
+        result.style.color = 'green';
+        result.textContent = 'Seller-Verified';
+      } else {
+        result.style.color = 'red';
+        result.textContent = 'Seller-Not-Found';
+      }
+    }
+
+    function payNow(sellerName) {
+      alert('Proceeding to payment for ' + sellerName + '. (Demo only)');
+      // Here you can redirect to payment page or open payment modal
     }
   </script>
 
